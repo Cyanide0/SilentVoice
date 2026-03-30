@@ -3,9 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إشارة AI — النموذج التفاعلي</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<title data-ar="إشارة AI — النموذج التفاعلي" data-en="Ishara AI — Interactive Demo"></title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<script src="lang.js" defer></script>
+<style>
+
+  /* ── Language Toggle ── */
+  .lang-toggle {
+    display: flex; align-items: center;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 999px; padding: 3px; cursor: pointer;
+    transition: border-color 0.2s; user-select: none; flex-shrink: 0; gap: 0;
+  }
+  .lang-toggle:hover { border-color: var(--teal); }
+  .lang-pill {
+    font-size: 0.8rem; font-weight: 800; padding: 5px 14px;
+    border-radius: 999px; color: var(--muted);
+    transition: background 0.22s, color 0.22s;
+    letter-spacing: 0.02em; line-height: 1;
+    font-family: 'Tajawal', 'Inter', sans-serif;
+    border: none; background: none;
+  }
+  .lang-pill.active { background: var(--teal); color: #fff; }
+
+  /* ── English font override ── */
+  html[lang="en"] body,
+  html[lang="en"] .logo-name, html[lang="en"] .logo-sub,
+  html[lang="en"] .nav-links a, html[lang="en"] .nav-pill,
+  html[lang="en"] .banner-breadcrumb, html[lang="en"] .banner-title,
+  html[lang="en"] .banner-sub, html[lang="en"] .foot-title,
+  html[lang="en"] .foot-sub, html[lang="en"] .foot-nav a,
+  html[lang="en"] .foot-badge, html[lang="en"] .lang-pill { font-family: 'Inter', sans-serif; }
+
+  /* ── Smooth page fade ── */
+  body { transition: opacity 0.18s ease; }
+  body.lang-switching { opacity: 0; }
+
+  /* ── Bilingual content ── */
+  [data-ar], [data-en], span[data-ar], span[data-en] { display: none; }
+  html[lang="ar"] [data-ar]     { display: revert; }
+  html[lang="en"] [data-en]     { display: revert; }
+  html[lang="ar"] span[data-ar] { display: inline; }
+  html[lang="en"] span[data-en] { display: inline; }
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -13,22 +55,44 @@
 <nav>
   <div class="nav-logo">
     <div class="logo-mark"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-    <div><div class="logo-name">إشارة AI</div><div class="logo-sub">مترجم لغة الإشارة</div></div>
+    <div>
+      <div class="logo-name"><span data-ar>إشارة AI</span><span data-en>Ishara AI</span></div>
+      <div class="logo-sub"><span data-ar>مترجم لغة الإشارة</span><span data-en>Sign Language Translator</span></div>
+    </div>
   </div>
+
   <div class="nav-links">
-    <a href="index.html">الرئيسية</a>
-    <a href="demo.html" class="active">النموذج</a>
-    <a href="how.html">آلية العمل</a>
-    <a href="tech.html">التقنيات</a>
+    <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+    <a href="demo.html" class="active"><span data-ar>النموذج</span><span data-en>Demo</span></a>
+    <a href="how.html"><span data-ar>آلية العمل</span><span data-en>How It Works</span></a>
+    <a href="tech.html"><span data-ar>التقنيات</span><span data-en>Technology</span></a>
   </div>
-  <div class="nav-pill">مشروع تخرج · جامعة الطائف</div>
+
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+    <span class="lang-pill active" id="pillAr">عر</span>
+    <span class="lang-pill"        id="pillEn">EN</span>
+  </button>
+
+  <div class="nav-pill">
+    <span data-ar>مشروع تخرج · جامعة الطائف</span>
+    <span data-en>Graduation Project · Taif University</span>
+  </div>
 </nav>
 
 <div class="page-banner">
   <div class="banner-content">
-    <div class="banner-breadcrumb"><a href="index.html">الرئيسية</a> &larr; النموذج التفاعلي</div>
-    <h1 class="banner-title">النموذج التفاعلي</h1>
-    <p class="banner-sub">جرّب الكشف المباشر عن إشارات اليد عبر كاميرا جهازك. النظام يحاكي مخرجات نموذج الذكاء الاصطناعي في الوقت الفعلي.</p>
+    <div class="banner-breadcrumb">
+      <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+      &larr; <span data-ar>النموذج التفاعلي</span><span data-en>Interactive Demo</span>
+    </div>
+    <h1 class="banner-title">
+      <span data-ar>النموذج التفاعلي</span>
+      <span data-en>Interactive Demo</span>
+    </h1>
+    <p class="banner-sub">
+      <span data-ar>جرّب الكشف المباشر عن إشارات اليد عبر كاميرا جهازك. النظام يحاكي مخرجات نموذج الذكاء الاصطناعي في الوقت الفعلي.</span>
+      <span data-en>Try live hand-sign detection via your device camera. The system simulates real-time AI model output.</span>
+    </p>
   </div>
 </div>
 
@@ -47,8 +111,8 @@
         <div class="ico-lrg">
           <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
-        <p>اضغط لتفعيل الكاميرا</p>
-        <small>انقر في أي مكان لبدء التصوير</small>
+        <p><span data-ar>اضغط لتفعيل الكاميرا</span><span data-en>Click to activate camera</span></p>
+        <small><span data-ar>انقر في أي مكان لبدء التصوير</span><span data-en>Click anywhere to start</span></small>
       </div>
       <video id="cam-feed" autoplay playsinline muted></video>
       <canvas id="lm-canvas"></canvas>
@@ -57,7 +121,7 @@
       <div class="corner c-tl"></div>
       <div class="corner c-br"></div>
       <div class="corner c-bl"></div>
-      <div class="live-badge" id="live-badge">كشف مباشر</div>
+      <div class="live-badge" id="live-badge"><span data-ar>كشف مباشر</span><span data-en>Live Detection</span></div>
       <button class="play-btn" id="play-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </button>
@@ -65,20 +129,20 @@
 
     <div class="output-area">
       <div class="out-box">
-        <div class="out-lbl">الإشارة المكتشفة</div>
+        <div class="out-lbl"><span data-ar>الإشارة المكتشفة</span><span data-en>Detected Sign</span></div>
         <div class="out-val" id="ar-word">—</div>
         <div class="conf-bar"><div class="conf-fill" id="cf1"></div></div>
       </div>
       <div class="out-box">
-        <div class="out-lbl">نسبة الثقة</div>
+        <div class="out-lbl"><span data-ar>نسبة الثقة</span><span data-en>Confidence</span></div>
         <div class="out-val" id="conf-num">—</div>
         <div class="conf-bar"><div class="conf-fill amber" id="cf2"></div></div>
       </div>
     </div>
 
     <div class="sentence-box">
-      <div class="sent-lbl">الجملة المترجمة</div>
-      <div class="sent-txt" id="sentence">في انتظار اكتشاف الإشارة...</div>
+      <div class="sent-lbl"><span data-ar>الجملة المترجمة</span><span data-en>Translated Sentence</span></div>
+      <div class="sent-txt" id="sentence"><span data-ar>في انتظار اكتشاف الإشارة...</span><span data-en>Waiting for sign detection...</span></div>
     </div>
   </div>
 
@@ -88,128 +152,171 @@
       <div style="display:flex;justify-content:center;margin-bottom:.6rem">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </div>
-      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">انقر على الكاميرا لتفعيلها</div>
+      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">
+        <span data-ar>انقر على الكاميرا لتفعيلها</span>
+        <span data-en>Click the camera to activate it</span>
+      </div>
     </div>
     <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;text-align:center">
       <div style="display:flex;justify-content:center;margin-bottom:.6rem">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
       </div>
-      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">ضع يدك أمام الكاميرا بوضوح</div>
+      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">
+        <span data-ar>ضع يدك أمام الكاميرا بوضوح</span>
+        <span data-en>Place your hand clearly in front of the camera</span>
+      </div>
     </div>
     <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;text-align:center">
       <div style="display:flex;justify-content:center;margin-bottom:.6rem">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
-      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">راقب النتيجة تحت الكاميرا</div>
+      <div style="font-size:.92rem;font-weight:700;color:var(--ink2)">
+        <span data-ar>راقب النتيجة تحت الكاميرا</span>
+        <span data-en>Watch the result below the camera</span>
+      </div>
     </div>
   </div>
 
   <div style="margin-top:1.5rem;background:var(--teal-lt);border:1px solid rgba(61,121,112,.18);border-radius:12px;padding:1rem 1.3rem;display:flex;gap:10px;align-items:flex-start">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <div style="font-size:.88rem;font-weight:500;color:var(--ink2);line-height:1.8">هذا نموذج أوّلي للواجهة الأمامية. الكشف الحالي تجريبي ومحاكى. عند ربط النظام بنموذج CNN/LSTM الكامل سيتم استبدال هذه المحاكاة بنتائج حقيقية من MediaPipe.</div>
+    <div style="font-size:.88rem;font-weight:500;color:var(--ink2);line-height:1.8">
+      <span data-ar>هذا نموذج أوّلي للواجهة الأمامية. الكشف الحالي تجريبي ومحاكى. عند ربط النظام بنموذج CNN/LSTM الكامل سيتم استبدال هذه المحاكاة بنتائج حقيقية من MediaPipe.</span>
+      <span data-en>This is a front-end prototype. Current detection is simulated. Once connected to the full CNN/LSTM model, this simulation will be replaced with real results from MediaPipe.</span>
+    </div>
   </div>
 </div>
 
 </div>
 
 <div class="foot">
-  <div><div class="foot-title">إشارة AI — مشروع التخرج</div><div class="foot-sub">جامعة الطائف · قسم علوم الحاسب ٢٠٢٥-٢٠٢٦</div></div>
-  <div class="foot-nav"><a href="index.html">الرئيسية</a><a href="demo.html">النموذج</a><a href="how.html">آلية العمل</a><a href="tech.html">التقنيات</a></div>
-  <div class="foot-badge">جامعة الطائف · ٢٠٢٥-٢٠٢٦</div>
+  <div>
+    <div class="foot-title"><span data-ar>إشارة AI — مشروع التخرج</span><span data-en>Ishara AI — Graduation Project</span></div>
+    <div class="foot-sub"><span data-ar>جامعة الطائف · قسم علوم الحاسب ٢٠٢٥-٢٠٢٦</span><span data-en>Taif University · Computer Science Dept. 2025–2026</span></div>
+  </div>
+  <div class="foot-nav">
+    <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+    <a href="demo.html"><span data-ar>النموذج</span><span data-en>Demo</span></a>
+    <a href="how.html"><span data-ar>آلية العمل</span><span data-en>How It Works</span></a>
+    <a href="tech.html"><span data-ar>التقنيات</span><span data-en>Technology</span></a>
+  </div>
+  <div class="foot-badge"><span data-ar>جامعة الطائف · ٢٠٢٥-٢٠٢٦</span><span data-en>Taif University · 2025–2026</span></div>
 </div>
 
 <div id="toast"></div>
 
 <script>
-const vp=document.getElementById('cam-vp'),feed=document.getElementById('cam-feed'),
-  offMsg=document.getElementById('off-msg'),recInd=document.getElementById('rec-ind'),
-  liveBadge=document.getElementById('live-badge'),scanRing=document.getElementById('scan-ring'),
-  playBtn=document.getElementById('play-btn'),arWord=document.getElementById('ar-word'),
-  confNum=document.getElementById('conf-num'),sentence=document.getElementById('sentence'),
-  cf1=document.getElementById('cf1'),cf2=document.getElementById('cf2'),
-  canvas=document.getElementById('lm-canvas'),ctx=canvas.getContext('2d'),
-  corners=document.querySelectorAll('.corner');
-let active=false,detInterval,rafId,signIdx=0;
+/* ── Camera & detection logic (language-independent) ── */
+var vp        = document.getElementById('cam-vp'),
+    feed      = document.getElementById('cam-feed'),
+    offMsg    = document.getElementById('off-msg'),
+    recInd    = document.getElementById('rec-ind'),
+    liveBadge = document.getElementById('live-badge'),
+    scanRing  = document.getElementById('scan-ring'),
+    playBtn   = document.getElementById('play-btn'),
+    arWord    = document.getElementById('ar-word'),
+    confNum   = document.getElementById('conf-num'),
+    sentence  = document.getElementById('sentence'),
+    cf1       = document.getElementById('cf1'),
+    cf2       = document.getElementById('cf2'),
+    canvas    = document.getElementById('lm-canvas'),
+    ctx       = canvas.getContext('2d'),
+    corners   = document.querySelectorAll('.corner');
 
-const signs=[
-  {ar:'مرحباً',    conf:92,sent:'مرحباً، كيف حالك؟'},
-  {ar:'شكراً',     conf:88,sent:'شكراً جزيلاً على مساعدتك.'},
-  {ar:'من فضلك',   conf:90,sent:'من فضلك، هل يمكنك مساعدتي؟'},
-  {ar:'نعم',       conf:96,sent:'نعم، هذا صحيح تماماً.'},
-  {ar:'لا',        conf:94,sent:'لا، لم أقصد ذلك.'},
-  {ar:'ماء',       conf:91,sent:'أحتاج إلى ماء من فضلك.'},
-  {ar:'مساعدة',    conf:86,sent:'أحتاج إلى مساعدة عاجلة.'},
-  {ar:'أحبك',      conf:95,sent:'أحبك وأقدّر وجودك.'},
-  {ar:'صباح الخير',conf:89,sent:'صباح الخير، أتمنى لك يوماً سعيداً.'},
+var active = false, detInterval, rafId, signIdx = 0;
+
+var signs = [
+  { ar:'مرحباً',     en:'Hello',       conf:92, sentAr:'مرحباً، كيف حالك؟',                    sentEn:'Hello, how are you?' },
+  { ar:'شكراً',      en:'Thank you',   conf:88, sentAr:'شكراً جزيلاً على مساعدتك.',            sentEn:'Thank you so much for your help.' },
+  { ar:'من فضلك',    en:'Please',      conf:90, sentAr:'من فضلك، هل يمكنك مساعدتي؟',          sentEn:'Please, can you help me?' },
+  { ar:'نعم',        en:'Yes',         conf:96, sentAr:'نعم، هذا صحيح تماماً.',                sentEn:'Yes, that is absolutely correct.' },
+  { ar:'لا',         en:'No',          conf:94, sentAr:'لا، لم أقصد ذلك.',                    sentEn:'No, I did not mean that.' },
+  { ar:'ماء',        en:'Water',       conf:91, sentAr:'أحتاج إلى ماء من فضلك.',              sentEn:'I need water please.' },
+  { ar:'مساعدة',     en:'Help',        conf:86, sentAr:'أحتاج إلى مساعدة عاجلة.',             sentEn:'I need urgent help.' },
+  { ar:'أحبك',       en:'I love you',  conf:95, sentAr:'أحبك وأقدّر وجودك.',                  sentEn:'I love you and appreciate your presence.' },
+  { ar:'صباح الخير', en:'Good morning',conf:89, sentAr:'صباح الخير، أتمنى لك يوماً سعيداً.',  sentEn:'Good morning, I hope you have a wonderful day.' },
 ];
 
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+function toast(m) {
+  var t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
 
-function startCam(){
-  navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:1280}}})
-    .then(stream=>{
-      feed.srcObject=stream;feed.style.display='block';
-      offMsg.style.opacity='0';playBtn.style.display='none';
-      recInd.style.opacity='1';liveBadge.style.display='block';
-      scanRing.style.display='block';canvas.style.display='block';
-      corners.forEach(c=>c.style.display='block');
-      active=true;toast('تمّ تفعيل الكاميرا ✓');
-      startDet();drawLoop();
+function getLang() { return document.documentElement.lang || 'ar'; }
+
+function startCam() {
+  navigator.mediaDevices.getUserMedia({ video: { facingMode:'user', width:{ ideal:1280 } } })
+    .then(function(stream) {
+      feed.srcObject = stream; feed.style.display = 'block';
+      offMsg.style.opacity = '0'; playBtn.style.display = 'none';
+      recInd.style.opacity = '1'; liveBadge.style.display = 'block';
+      scanRing.style.display = 'block'; canvas.style.display = 'block';
+      corners.forEach(function(c){ c.style.display = 'block'; });
+      active = true;
+      toast(getLang() === 'ar' ? 'تمّ تفعيل الكاميرا ✓' : 'Camera activated ✓');
+      startDet(); drawLoop();
     })
-    .catch(()=>toast('تعذّر الوصول إلى الكاميرا'));
+    .catch(function(){ toast(getLang() === 'ar' ? 'تعذّر الوصول إلى الكاميرا' : 'Could not access camera'); });
 }
 
-vp.addEventListener('click',()=>{if(!active)startCam()});
-playBtn.addEventListener('click',e=>{e.stopPropagation();if(!active)startCam()});
+vp.addEventListener('click',     function(){ if (!active) startCam(); });
+playBtn.addEventListener('click', function(e){ e.stopPropagation(); if (!active) startCam(); });
 
-function startDet(){
-  detInterval=setInterval(()=>{
-    const s=signs[signIdx%signs.length];signIdx++;
-    arWord.style.opacity='0';confNum.style.opacity='0';
-    setTimeout(()=>{
-      arWord.textContent=s.ar;confNum.textContent=s.conf+'٪';
-      arWord.style.opacity='1';confNum.style.opacity='1';
-      cf1.style.width=s.conf+'%';cf2.style.width=s.conf+'%';
-      sentence.textContent=s.sent;
-    },280);
-  },2500);
+function startDet() {
+  detInterval = setInterval(function() {
+    var s = signs[signIdx % signs.length]; signIdx++;
+    var lang = getLang();
+    arWord.style.opacity = '0'; confNum.style.opacity = '0';
+    setTimeout(function() {
+      arWord.textContent  = lang === 'ar' ? s.ar : s.en;
+      confNum.textContent = s.conf + (lang === 'ar' ? '٪' : '%');
+      arWord.style.opacity = '1'; confNum.style.opacity = '1';
+      cf1.style.width = s.conf + '%';
+      cf2.style.width = s.conf + '%';
+      sentence.textContent = lang === 'ar' ? s.sentAr : s.sentEn;
+    }, 280);
+  }, 2500);
 }
 
-function drawLoop(){
-  function loop(){
-    if(!active){rafId=requestAnimationFrame(loop);return}
-    const W=canvas.offsetWidth,H=canvas.offsetHeight;
-    canvas.width=W;canvas.height=H;ctx.clearRect(0,0,W,H);
-    const t=Date.now()/1000,cx=W*.5+Math.sin(t*.7)*W*.04,cy=H*.46+Math.cos(t*.5)*H*.035;
-    const palm=[[cx,cy],[cx-W*.065,cy+H*.065],[cx-W*.04,cy+H*.14],[cx+W*.04,cy+H*.14],[cx+W*.065,cy+H*.065]];
-    ctx.beginPath();ctx.moveTo(...palm[0]);palm.forEach(p=>ctx.lineTo(...p));ctx.closePath();
-    ctx.strokeStyle='rgba(61,121,112,.5)';ctx.lineWidth=1.5;ctx.stroke();
-    const fingers=[
-      {b:[cx-W*.075,cy],tip:[cx-W*.095,cy-H*.14]},
-      {b:[cx-W*.03,cy-H*.02],tip:[cx-W*.033,cy-H*.18]},
-      {b:[cx+W*.01,cy-H*.02],tip:[cx+W*.01,cy-H*.19]},
-      {b:[cx+W*.05,cy],tip:[cx+W*.065,cy-H*.16]},
-      {b:[cx+W*.08,cy+H*.03],tip:[cx+W*.125,cy-H*.04]},
+function drawLoop() {
+  function loop() {
+    if (!active) { rafId = requestAnimationFrame(loop); return; }
+    var W = canvas.offsetWidth, H = canvas.offsetHeight;
+    canvas.width = W; canvas.height = H; ctx.clearRect(0, 0, W, H);
+    var t  = Date.now() / 1000,
+        cx = W * .5  + Math.sin(t * .7) * W * .04,
+        cy = H * .46 + Math.cos(t * .5) * H * .035;
+    var palm = [[cx,cy],[cx-W*.065,cy+H*.065],[cx-W*.04,cy+H*.14],[cx+W*.04,cy+H*.14],[cx+W*.065,cy+H*.065]];
+    ctx.beginPath(); ctx.moveTo(palm[0][0], palm[0][1]);
+    palm.forEach(function(p){ ctx.lineTo(p[0], p[1]); }); ctx.closePath();
+    ctx.strokeStyle = 'rgba(61,121,112,.5)'; ctx.lineWidth = 1.5; ctx.stroke();
+    var fingers = [
+      { b:[cx-W*.075,cy],      tip:[cx-W*.095,cy-H*.14] },
+      { b:[cx-W*.03,cy-H*.02], tip:[cx-W*.033,cy-H*.18] },
+      { b:[cx+W*.01,cy-H*.02], tip:[cx+W*.01, cy-H*.19] },
+      { b:[cx+W*.05,cy],       tip:[cx+W*.065,cy-H*.16] },
+      { b:[cx+W*.08,cy+H*.03], tip:[cx+W*.125,cy-H*.04] },
     ];
-    fingers.forEach((f,i)=>{
-      const w=Math.sin(t*1.2+i*.9)*H*.013;
-      ctx.beginPath();ctx.moveTo(...f.b);ctx.lineTo(f.tip[0],f.tip[1]+w);
-      ctx.strokeStyle='rgba(61,121,112,.45)';ctx.lineWidth=1.2;ctx.stroke();
-      const mid=[(f.b[0]+f.tip[0])/2,(f.b[1]+f.tip[1])/2+w/2];
-      [f.b,mid,[f.tip[0],f.tip[1]+w]].forEach(p=>{
-        ctx.beginPath();ctx.arc(p[0],p[1],3,0,Math.PI*2);
-        ctx.fillStyle='rgba(61,121,112,.65)';ctx.fill();
+    fingers.forEach(function(f, i) {
+      var w = Math.sin(t * 1.2 + i * .9) * H * .013;
+      ctx.beginPath(); ctx.moveTo(f.b[0], f.b[1]); ctx.lineTo(f.tip[0], f.tip[1] + w);
+      ctx.strokeStyle = 'rgba(61,121,112,.45)'; ctx.lineWidth = 1.2; ctx.stroke();
+      var mid = [(f.b[0]+f.tip[0])/2, (f.b[1]+f.tip[1])/2+w/2];
+      [f.b, mid, [f.tip[0], f.tip[1]+w]].forEach(function(p) {
+        ctx.beginPath(); ctx.arc(p[0], p[1], 3, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(61,121,112,.65)'; ctx.fill();
       });
     });
-    ctx.beginPath();ctx.arc(cx,cy+H*.1,4.5,0,Math.PI*2);
-    ctx.fillStyle='rgba(181,130,10,.55)';ctx.fill();
-    rafId=requestAnimationFrame(loop);
+    ctx.beginPath(); ctx.arc(cx, cy+H*.1, 4.5, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(181,130,10,.55)'; ctx.fill();
+    rafId = requestAnimationFrame(loop);
   }
   loop();
 }
-window.addEventListener('beforeunload',()=>{
-  clearInterval(detInterval);cancelAnimationFrame(rafId);
-  if(feed.srcObject)feed.srcObject.getTracks().forEach(t=>t.stop());
+
+window.addEventListener('beforeunload', function() {
+  clearInterval(detInterval); cancelAnimationFrame(rafId);
+  if (feed.srcObject) feed.srcObject.getTracks().forEach(function(t){ t.stop(); });
 });
 </script>
 </body>
