@@ -3,9 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إشارة AI — آلية العمل</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<title data-ar="إشارة AI — آلية العمل" data-en="Ishara AI — How It Works"></title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
+<script src="lang.js" defer></script>
+<style>
+
+  /* ── Language Toggle ── */
+  .lang-toggle {
+    display: flex; align-items: center;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 999px; padding: 3px; cursor: pointer;
+    transition: border-color 0.2s; user-select: none; flex-shrink: 0; gap: 0;
+  }
+  .lang-toggle:hover { border-color: var(--teal); }
+  .lang-pill {
+    font-size: 0.8rem; font-weight: 800; padding: 5px 14px;
+    border-radius: 999px; color: var(--muted);
+    transition: background 0.22s, color 0.22s;
+    letter-spacing: 0.02em; line-height: 1;
+    font-family: 'Tajawal', 'Inter', sans-serif;
+    border: none; background: none;
+  }
+  .lang-pill.active { background: var(--teal); color: #fff; }
+
+  /* ── English font override ── */
+  html[lang="en"] body,
+  html[lang="en"] .logo-name, html[lang="en"] .logo-sub,
+  html[lang="en"] .nav-links a, html[lang="en"] .nav-pill,
+  html[lang="en"] .banner-breadcrumb, html[lang="en"] .banner-title,
+  html[lang="en"] .banner-sub, html[lang="en"] .sec-lbl, html[lang="en"] .sec-title,
+  html[lang="en"] .step-card-title, html[lang="en"] .step-card-desc,
+  html[lang="en"] .step-tag, html[lang="en"] .meth-title, html[lang="en"] .meth-text,
+  html[lang="en"] .meth-phase-name, html[lang="en"] .foot-title,
+  html[lang="en"] .foot-sub, html[lang="en"] .foot-nav a,
+  html[lang="en"] .foot-badge, html[lang="en"] .lang-pill { font-family: 'Inter', sans-serif; }
+
+  /* ── Smooth page fade ── */
+  body { transition: opacity 0.18s ease; }
+  body.lang-switching { opacity: 0; }
+
+  /* ── Bilingual content ── */
+  [data-ar], [data-en], span[data-ar], span[data-en] { display: none; }
+  html[lang="ar"] [data-ar]     { display: revert; }
+  html[lang="en"] [data-en]     { display: revert; }
+  html[lang="ar"] span[data-ar] { display: inline; }
+  html[lang="en"] span[data-en] { display: inline; }
+
+  /* pipeline arrows flip in LTR */
+  html[lang="en"] .pipe-arrow { transform: scaleX(-1); display: inline-block; }
+
+</style>
 </head>
 <body>
 <div class="page">
@@ -13,66 +61,96 @@
 <nav>
   <div class="nav-logo">
     <div class="logo-mark"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-    <div><div class="logo-name">إشارة AI</div><div class="logo-sub">مترجم لغة الإشارة</div></div>
+    <div>
+      <div class="logo-name"><span data-ar>إشارة AI</span><span data-en>Ishara AI</span></div>
+      <div class="logo-sub"><span data-ar>مترجم لغة الإشارة</span><span data-en>Sign Language Translator</span></div>
+    </div>
   </div>
+
   <div class="nav-links">
-    <a href="index.html">الرئيسية</a>
-    <a href="demo.html">النموذج</a>
-    <a href="how.html" class="active">آلية العمل</a>
-    <a href="tech.html">التقنيات</a>
+    <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+    <a href="demo.html"><span data-ar>النموذج</span><span data-en>Demo</span></a>
+    <a href="how.html" class="active"><span data-ar>آلية العمل</span><span data-en>How It Works</span></a>
+    <a href="tech.html"><span data-ar>التقنيات</span><span data-en>Technology</span></a>
   </div>
-  <div class="nav-pill">مشروع تخرج · جامعة الطائف</div>
+
+  <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+    <span class="lang-pill active" id="pillAr">عر</span>
+    <span class="lang-pill"        id="pillEn">EN</span>
+  </button>
+
+  <div class="nav-pill">
+    <span data-ar>مشروع تخرج · جامعة الطائف</span>
+    <span data-en>Graduation Project · Taif University</span>
+  </div>
 </nav>
 
 <div class="page-banner">
   <div class="banner-content">
-    <div class="banner-breadcrumb"><a href="index.html">الرئيسية</a> &larr; آلية العمل</div>
-    <h1 class="banner-title">آلية عمل النظام</h1>
-    <p class="banner-sub">استعراض تفصيلي لمراحل النظام بدءاً من التقاط الصورة وصولاً إلى تركيب الصوت، مع شرح كل مرحلة وما تؤدّيه.</p>
+    <div class="banner-breadcrumb">
+      <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+      &larr; <span data-ar>آلية العمل</span><span data-en>How It Works</span>
+    </div>
+    <h1 class="banner-title">
+      <span data-ar>آلية عمل النظام</span>
+      <span data-en>How the System Works</span>
+    </h1>
+    <p class="banner-sub">
+      <span data-ar>استعراض تفصيلي لمراحل النظام بدءاً من التقاط الصورة وصولاً إلى تركيب الصوت، مع شرح كل مرحلة وما تؤدّيه.</span>
+      <span data-en>A detailed walkthrough of the system pipeline, from image capture all the way to speech synthesis, with an explanation of each stage.</span>
+    </p>
   </div>
 </div>
 
 <div class="how-layout">
 
   <!-- PIPELINE OVERVIEW -->
-  <div class="sec-lbl" style="text-align:right;margin-bottom:.5rem">نظرة عامة</div>
-  <h2 class="sec-title" style="text-align:right;margin-bottom:1.5rem">خط معالجة الإشارة</h2>
+  <div class="sec-lbl" style="text-align:right;margin-bottom:.5rem">
+    <span data-ar>نظرة عامة</span><span data-en>Overview</span>
+  </div>
+  <h2 class="sec-title" style="text-align:right;margin-bottom:1.5rem">
+    <span data-ar>خط معالجة الإشارة</span><span data-en>Sign Processing Pipeline</span>
+  </h2>
 
-  <div style="display:flex;align-items:center;gap:0;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1rem;margin-bottom:3rem;overflow-x:auto;flex-wrap:wrap;justify-content:center;gap:6px">
+  <div style="display:flex;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1rem;margin-bottom:3rem;overflow-x:auto;flex-wrap:wrap;justify-content:center;gap:6px">
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div style="font-size:.85rem;font-weight:700;color:var(--teal)">الكاميرا</div>
+      <div style="font-size:.85rem;font-weight:700;color:var(--teal)"><span data-ar>الكاميرا</span><span data-en>Camera</span></div>
     </div>
-    <div style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
+    <div class="pipe-arrow" style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
       <div style="font-size:.85rem;font-weight:700;color:var(--teal)">MediaPipe</div>
     </div>
-    <div style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
+    <div class="pipe-arrow" style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
       <div style="font-size:.85rem;font-weight:700;color:var(--teal)">OpenCV</div>
     </div>
-    <div style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
+    <div class="pipe-arrow" style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
       <div style="font-size:.85rem;font-weight:700;color:var(--teal)">CNN/LSTM</div>
     </div>
-    <div style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
+    <div class="pipe-arrow" style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <div style="font-size:.85rem;font-weight:700;color:var(--teal)">النصّ</div>
+      <div style="font-size:.85rem;font-weight:700;color:var(--teal)"><span data-ar>النصّ</span><span data-en>Text</span></div>
     </div>
-    <div style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
+    <div class="pipe-arrow" style="color:var(--sand3);font-size:1.2rem;padding:0 2px;align-self:center">←</div>
     <div style="text-align:center;flex:1;min-width:80px;padding:.5rem">
       <div style="display:flex;justify-content:center;margin-bottom:6px"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
-      <div style="font-size:.85rem;font-weight:700;color:var(--amber)">الصوت</div>
+      <div style="font-size:.85rem;font-weight:700;color:var(--amber)"><span data-ar>الصوت</span><span data-en>Speech</span></div>
     </div>
   </div>
 
   <!-- STEPS -->
-  <div class="sec-lbl" style="text-align:right;margin-bottom:.5rem">المراحل التفصيلية</div>
-  <h2 class="sec-title" style="text-align:right;margin-bottom:1.5rem">خطوات النظام</h2>
+  <div class="sec-lbl" style="text-align:right;margin-bottom:.5rem">
+    <span data-ar>المراحل التفصيلية</span><span data-en>Detailed Stages</span>
+  </div>
+  <h2 class="sec-title" style="text-align:right;margin-bottom:1.5rem">
+    <span data-ar>خطوات النظام</span><span data-en>System Steps</span>
+  </h2>
 
   <div class="step-cards">
 
@@ -82,9 +160,16 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">التقاط الفيديو عبر الكاميرا</div>
-        <div class="step-card-desc">يلتقط النظام تدفق الفيديو الحيّ من كاميرا المستخدم أو من مقاطع فيديو مسجّلة مسبقاً. تُعالَج كل إطار على حدة بمعدّل لا يقلّ عن ٣٠ إطاراً في الثانية لضمان سلاسة الكشف.</div>
-        <div class="step-card-tags"><span class="step-tag">Webcam</span><span class="step-tag">30fps</span><span class="step-tag">تدفّق مباشر</span></div>
+        <div class="step-card-title"><span data-ar>التقاط الفيديو عبر الكاميرا</span><span data-en>Video Capture via Camera</span></div>
+        <div class="step-card-desc">
+          <span data-ar>يلتقط النظام تدفق الفيديو الحيّ من كاميرا المستخدم أو من مقاطع فيديو مسجّلة مسبقاً. تُعالَج كل إطار على حدة بمعدّل لا يقلّ عن ٣٠ إطاراً في الثانية لضمان سلاسة الكشف.</span>
+          <span data-en>The system captures a live video stream from the user's camera or from pre-recorded video clips. Each frame is processed individually at a rate of at least 30 frames per second to ensure smooth detection.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">Webcam</span>
+          <span class="step-tag">30fps</span>
+          <span class="step-tag"><span data-ar>تدفّق مباشر</span><span data-en>Live Stream</span></span>
+        </div>
       </div>
     </div>
 
@@ -96,9 +181,17 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">المعالجة الأوّلية بـ OpenCV</div>
-        <div class="step-card-desc">تُعالَج الإطارات باستخدام OpenCV لتحسين جودة الصورة؛ يشمل ذلك تغيير الحجم، التطبيع، إزالة الخلفية، وتعديل الإضاءة. هذه الخطوة تُهيّئ الصورة لمرحلة الكشف الدقيق عن اليدين.</div>
-        <div class="step-card-tags"><span class="step-tag">Resize</span><span class="step-tag">Normalize</span><span class="step-tag">Augmentation</span><span class="step-tag">إزالة الخلفية</span></div>
+        <div class="step-card-title"><span data-ar>المعالجة الأوّلية بـ OpenCV</span><span data-en>Pre-processing with OpenCV</span></div>
+        <div class="step-card-desc">
+          <span data-ar>تُعالَج الإطارات باستخدام OpenCV لتحسين جودة الصورة؛ يشمل ذلك تغيير الحجم، التطبيع، إزالة الخلفية، وتعديل الإضاءة. هذه الخطوة تُهيّئ الصورة لمرحلة الكشف الدقيق عن اليدين.</span>
+          <span data-en>Frames are processed using OpenCV to improve image quality, including resizing, normalization, background removal, and lighting adjustment. This step prepares the image for the precise hand detection stage.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">Resize</span>
+          <span class="step-tag">Normalize</span>
+          <span class="step-tag">Augmentation</span>
+          <span class="step-tag"><span data-ar>إزالة الخلفية</span><span data-en>Background Removal</span></span>
+        </div>
       </div>
     </div>
 
@@ -110,9 +203,16 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">تتبّع نقاط اليد بـ MediaPipe</div>
-        <div class="step-card-desc">يستخدم النظام MediaPipe Hands لرصد وتتبّع ٢١ نقطة معلَم على كل يد. تُمثّل هذه النقاط مفاصل وأطراف الأصابع وتُوفّر بيانات إحداثيات ثلاثية الأبعاد تُشكّل مدخل النموذج الأساسي.</div>
-        <div class="step-card-tags"><span class="step-tag">21 Landmark</span><span class="step-tag">ثلاثي الأبعاد</span><span class="step-tag">MediaPipe Hands</span></div>
+        <div class="step-card-title"><span data-ar>تتبّع نقاط اليد بـ MediaPipe</span><span data-en>Hand Landmark Tracking with MediaPipe</span></div>
+        <div class="step-card-desc">
+          <span data-ar>يستخدم النظام MediaPipe Hands لرصد وتتبّع ٢١ نقطة معلَم على كل يد. تُمثّل هذه النقاط مفاصل وأطراف الأصابع وتُوفّر بيانات إحداثيات ثلاثية الأبعاد تُشكّل مدخل النموذج الأساسي.</span>
+          <span data-en>The system uses MediaPipe Hands to detect and track 21 landmark points on each hand. These points represent finger joints and tips, providing 3D coordinate data that forms the model's primary input.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">21 Landmark</span>
+          <span class="step-tag"><span data-ar>ثلاثي الأبعاد</span><span data-en>3D Coordinates</span></span>
+          <span class="step-tag">MediaPipe Hands</span>
+        </div>
       </div>
     </div>
 
@@ -124,9 +224,18 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">التعرّف بنماذج CNN + LSTM</div>
-        <div class="step-card-desc">تستخرج الشبكات التلافيفية (CNN) السمات المكانية من كل إطار، بينما تُحلّل LSTM التسلسل الزمني للإشارة عبر الإطارات المتتالية. يُستخدم التعليم المسبق والضبط الدقيق لتحسين الدقة مع البيانات المحدودة.</div>
-        <div class="step-card-tags"><span class="step-tag">CNN</span><span class="step-tag">LSTM</span><span class="step-tag">Transfer Learning</span><span class="step-tag">Fine-tuning</span><span class="step-tag">PyTorch</span></div>
+        <div class="step-card-title"><span data-ar>التعرّف بنماذج CNN + LSTM</span><span data-en>Recognition via CNN + LSTM Models</span></div>
+        <div class="step-card-desc">
+          <span data-ar>تستخرج الشبكات التلافيفية (CNN) السمات المكانية من كل إطار، بينما تُحلّل LSTM التسلسل الزمني للإشارة عبر الإطارات المتتالية. يُستخدم التعليم المسبق والضبط الدقيق لتحسين الدقة مع البيانات المحدودة.</span>
+          <span data-en>Convolutional networks (CNN) extract spatial features from each frame, while LSTM analyzes the temporal sequence of the sign across consecutive frames. Pre-training and fine-tuning are used to improve accuracy with limited data.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">CNN</span>
+          <span class="step-tag">LSTM</span>
+          <span class="step-tag">Transfer Learning</span>
+          <span class="step-tag">Fine-tuning</span>
+          <span class="step-tag">PyTorch</span>
+        </div>
       </div>
     </div>
 
@@ -138,9 +247,16 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">تحويل الإشارة إلى نصّ</div>
-        <div class="step-card-desc">يُرسَل ناتج النموذج إلى طبقة التحويل التي تُقابل الإشارة المُكتشَفة مع قاموس الكلمات المناظرة. تُبنى الجمل باستخدام نموذج لغوي بسيط يجمع الكلمات في تسلسل منطقي.</div>
-        <div class="step-card-tags"><span class="step-tag">Word Mapping</span><span class="step-tag">بناء الجملة</span><span class="step-tag">Label Encoding</span></div>
+        <div class="step-card-title"><span data-ar>تحويل الإشارة إلى نصّ</span><span data-en>Converting Sign to Text</span></div>
+        <div class="step-card-desc">
+          <span data-ar>يُرسَل ناتج النموذج إلى طبقة التحويل التي تُقابل الإشارة المُكتشَفة مع قاموس الكلمات المناظرة. تُبنى الجمل باستخدام نموذج لغوي بسيط يجمع الكلمات في تسلسل منطقي.</span>
+          <span data-en>The model's output is passed to a conversion layer that maps the detected sign to its corresponding word dictionary entry. Sentences are constructed using a simple language model that arranges words in a logical sequence.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">Word Mapping</span>
+          <span class="step-tag"><span data-ar>بناء الجملة</span><span data-en>Sentence Building</span></span>
+          <span class="step-tag">Label Encoding</span>
+        </div>
       </div>
     </div>
 
@@ -152,9 +268,17 @@
         <div class="step-ico-big"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
       </div>
       <div class="step-card-right">
-        <div class="step-card-title">تركيب الصوت والمخرجات النهائية</div>
-        <div class="step-card-desc">تُحوَّل الجملة النصية إلى صوت باستخدام مكتبة gTTS أو Azure Speech API، مما يُتيح التفاعل الشفهي الكامل. يُعرَض النص والصوت معاً في واجهة المستخدم لضمان إمكانية الوصول الشامل.</div>
-        <div class="step-card-tags"><span class="step-tag">gTTS</span><span class="step-tag">Azure Speech API</span><span class="step-tag">TTS</span><span class="step-tag">مخرجات مزدوجة</span></div>
+        <div class="step-card-title"><span data-ar>تركيب الصوت والمخرجات النهائية</span><span data-en>Speech Synthesis &amp; Final Output</span></div>
+        <div class="step-card-desc">
+          <span data-ar>تُحوَّل الجملة النصية إلى صوت باستخدام مكتبة gTTS أو Azure Speech API، مما يُتيح التفاعل الشفهي الكامل. يُعرَض النص والصوت معاً في واجهة المستخدم لضمان إمكانية الوصول الشامل.</span>
+          <span data-en>The text sentence is converted to speech using the gTTS library or Azure Speech API, enabling full verbal interaction. Both text and audio are displayed together in the user interface to ensure universal accessibility.</span>
+        </div>
+        <div class="step-card-tags">
+          <span class="step-tag">gTTS</span>
+          <span class="step-tag">Azure Speech API</span>
+          <span class="step-tag">TTS</span>
+          <span class="step-tag"><span data-ar>مخرجات مزدوجة</span><span data-en>Dual Output</span></span>
+        </div>
       </div>
     </div>
 
@@ -162,23 +286,50 @@
 
   <!-- METHODOLOGY -->
   <div class="methodology-box">
-    <div class="meth-title">منهجية التطوير — نموذج الشلّال</div>
-    <div class="meth-text">يعتمد المشروع على منهجية الشلّال (Waterfall) لكونها تناسب المشاريع ذات المتطلبات المحدّدة مسبقاً، إذ تكتمل كل مرحلة توثيقاً وتحقيقاً قبل الانتقال إلى التالية.</div>
+    <div class="meth-title">
+      <span data-ar>منهجية التطوير — نموذج الشلّال</span>
+      <span data-en>Development Methodology — Waterfall Model</span>
+    </div>
+    <div class="meth-text">
+      <span data-ar>يعتمد المشروع على منهجية الشلّال (Waterfall) لكونها تناسب المشاريع ذات المتطلبات المحدّدة مسبقاً، إذ تكتمل كل مرحلة توثيقاً وتحقيقاً قبل الانتقال إلى التالية.</span>
+      <span data-en>The project adopts the Waterfall methodology as it suits projects with pre-defined requirements, where each phase is fully documented and verified before moving to the next.</span>
+    </div>
     <div class="meth-phases">
-      <div class="meth-phase"><div class="meth-phase-num">①</div><div class="meth-phase-name">تحليل المتطلبات</div></div>
-      <div class="meth-phase"><div class="meth-phase-num">②</div><div class="meth-phase-name">تصميم النظام</div></div>
-      <div class="meth-phase"><div class="meth-phase-num">③</div><div class="meth-phase-name">التنفيذ والبرمجة</div></div>
-      <div class="meth-phase"><div class="meth-phase-num">④</div><div class="meth-phase-name">الاختبار والتقييم</div></div>
+      <div class="meth-phase">
+        <div class="meth-phase-num">①</div>
+        <div class="meth-phase-name"><span data-ar>تحليل المتطلبات</span><span data-en>Requirements Analysis</span></div>
+      </div>
+      <div class="meth-phase">
+        <div class="meth-phase-num">②</div>
+        <div class="meth-phase-name"><span data-ar>تصميم النظام</span><span data-en>System Design</span></div>
+      </div>
+      <div class="meth-phase">
+        <div class="meth-phase-num">③</div>
+        <div class="meth-phase-name"><span data-ar>التنفيذ والبرمجة</span><span data-en>Implementation &amp; Coding</span></div>
+      </div>
+      <div class="meth-phase">
+        <div class="meth-phase-num">④</div>
+        <div class="meth-phase-name"><span data-ar>الاختبار والتقييم</span><span data-en>Testing &amp; Evaluation</span></div>
+      </div>
     </div>
   </div>
 
 </div>
+</div>
 
-</div>
 <div class="foot">
-  <div><div class="foot-title">إشارة AI — مشروع التخرج</div><div class="foot-sub">جامعة الطائف · قسم علوم الحاسب ٢٠٢٥-٢٠٢٦</div></div>
-  <div class="foot-nav"><a href="index.html">الرئيسية</a><a href="demo.html">النموذج</a><a href="how.html">آلية العمل</a><a href="tech.html">التقنيات</a></div>
-  <div class="foot-badge">جامعة الطائف · ٢٠٢٥-٢٠٢٦</div>
+  <div>
+    <div class="foot-title"><span data-ar>إشارة AI — مشروع التخرج</span><span data-en>Ishara AI — Graduation Project</span></div>
+    <div class="foot-sub"><span data-ar>جامعة الطائف · قسم علوم الحاسب ٢٠٢٥-٢٠٢٦</span><span data-en>Taif University · Computer Science Dept. 2025–2026</span></div>
+  </div>
+  <div class="foot-nav">
+    <a href="index.html"><span data-ar>الرئيسية</span><span data-en>Home</span></a>
+    <a href="demo.html"><span data-ar>النموذج</span><span data-en>Demo</span></a>
+    <a href="how.html"><span data-ar>آلية العمل</span><span data-en>How It Works</span></a>
+    <a href="tech.html"><span data-ar>التقنيات</span><span data-en>Technology</span></a>
+  </div>
+  <div class="foot-badge"><span data-ar>جامعة الطائف · ٢٠٢٥-٢٠٢٦</span><span data-en>Taif University · 2025–2026</span></div>
 </div>
+
 </body>
 </html>
