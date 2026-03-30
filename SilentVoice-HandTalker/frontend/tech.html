@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إشارة AI — التقنيات</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="page">
+
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+    <div><div class="logo-name">إشارة AI</div><div class="logo-sub">مترجم لغة الإشارة</div></div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">الرئيسية</a>
+    <a href="demo.html">النموذج</a>
+    <a href="how.html">آلية العمل</a>
+    <a href="tech.html" class="active">التقنيات</a>
+  </div>
+  <div class="nav-pill">مشروع تخرج · جامعة الطائف</div>
+</nav>
+
+<div class="page-banner">
+  <div class="banner-content">
+    <div class="banner-breadcrumb"><a href="index.html">الرئيسية</a> &larr; التقنيات المستخدمة</div>
+    <h1 class="banner-title">التقنيات المستخدمة</h1>
+    <p class="banner-sub">استعراض مفصّل للمكتبات والأطر والبنية التحتية التي يقوم عليها النظام، مقسّمة إلى أقسام واضحة.</p>
+  </div>
+</div>
+
+<div class="tech-layout">
+
+  <div class="tech-tabs">
+    <button class="tech-tab active" onclick="showTab('libraries',this)">المكتبات والأدوات</button>
+    <button class="tech-tab" onclick="showTab('models',this)">نماذج الذكاء الاصطناعي</button>
+
+    <button class="tech-tab" onclick="showTab('infra',this)">بيئة التطوير</button>
+    <button class="tech-tab" onclick="showTab('metrics',this)">مقاييس التقييم</button>
+  </div>
+
+  <!-- TAB 1 -->
+  <div class="tech-tab-content active" id="tab-libraries">
+    <div class="tech-section-title">لغة البرمجة والمكتبات الأساسية</div>
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="tech-nm">Python</div>
+        </div>
+        <div class="tech-ds">لغة البرمجة الرئيسية للمشروع بأكمله، تتميّز بنظام بيئي غني لتطبيقات الذكاء الاصطناعي ورؤية الحاسوب.</div>
+        <span class="tech-badge">v3.10+</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <div class="tech-nm">OpenCV</div>
+        </div>
+        <div class="tech-ds">مكتبة رؤية الحاسوب الأساسية لالتقاط الفيديو، معالجة الإطارات، التطبيع، وعزل مناطق اليد.</div>
+        <span class="tech-badge">cv2</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+          <div class="tech-nm">MediaPipe</div>
+        </div>
+        <div class="tech-ds">إطار عمل من Google لتتبّع نقاط اليد الـ٢١ بدقة عالية في الوقت الفعلي مع دعم ثلاثي الأبعاد.</div>
+        <span class="tech-badge">Hands API</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+          <div class="tech-nm">PyTorch</div>
+        </div>
+        <div class="tech-ds">الإطار الرئيسي لبناء وتدريب نماذج التعلّم العميق (CNN + LSTM) مع دعم GPU متكامل.</div>
+        <span class="tech-badge">v2.0+</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
+          <div class="tech-nm">TorchVision</div>
+        </div>
+        <div class="tech-ds">مكمّل PyTorch للتعامل مع مجموعات البيانات البصرية، التحويلات، والنماذج المدرَّبة مسبقاً.</div>
+        <span class="tech-badge">Transforms</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <div class="tech-nm">NumPy + Pandas</div>
+        </div>
+        <div class="tech-ds">العمليات العددية، معالجة المصفوفات، إدارة مجموعات البيانات، وترميز التسميات.</div>
+        <span class="tech-badge">Array + DataFrame</span>
+      </div>
+    </div>
+    <div class="tech-section-title" style="margin-top:2rem">مكتبات المخرجات الصوتية</div>
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box amber"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+          <div class="tech-nm">gTTS</div>
+        </div>
+        <div class="tech-ds">مكتبة تركيب الكلام من النص (Text-to-Speech) لتوليد المخرجات الصوتية من الجمل المترجمة.</div>
+        <span class="tech-badge amber">TTS</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box amber"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
+          <div class="tech-nm">Azure Speech API</div>
+        </div>
+        <div class="tech-ds">خيار بديل لتركيب الصوت بجودة احترافية عبر خدمات Microsoft Azure المعرفية.</div>
+        <span class="tech-badge amber">Cognitive Services</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div class="tech-tab-content" id="tab-models">
+    <div class="tech-section-title">بنية النموذج المقترحة</div>
+    <div class="arch-diagram">
+      <div class="arch-block dark"><div class="arch-block-name">إدخال</div><div class="arch-block-sub">Landmarks</div></div>
+      <div class="arch-arrow">←</div>
+      <div class="arch-block"><div class="arch-block-name">CNN Backbone</div><div class="arch-block-sub">استخراج السمات</div></div>
+      <div class="arch-arrow">←</div>
+      <div class="arch-block"><div class="arch-block-name">LSTM Layers</div><div class="arch-block-sub">التسلسل الزمني</div></div>
+      <div class="arch-arrow">←</div>
+      <div class="arch-block"><div class="arch-block-name">Fully Connected</div><div class="arch-block-sub">تصنيف الإشارة</div></div>
+      <div class="arch-arrow">←</div>
+      <div class="arch-block amber"><div class="arch-block-name">Softmax</div><div class="arch-block-sub">نسبة الثقة</div></div>
+    </div>
+    <div class="tech-section-title">استراتيجية النماذج</div>
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="tech-nm">CNN — التعلّم المكاني</div>
+        </div>
+        <div class="tech-ds">تستخرج الشبكات التلافيفية السمات المكانية من إطارات الفيديو أو صور نقاط المعالم.</div>
+        <span class="tech-badge">Spatial Features</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
+          <div class="tech-nm">LSTM — التسلسل الزمني</div>
+        </div>
+        <div class="tech-ds">تُحلّل LSTM التتابع الزمني للإشارة عبر الإطارات المتعاقبة لفهم الإشارات الديناميكية.</div>
+        <span class="tech-badge">Temporal Sequences</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg></div>
+          <div class="tech-nm">Transfer Learning</div>
+        </div>
+        <div class="tech-ds">استخدام نماذج مدرَّبة مسبقاً ثم الضبط الدقيق لتخصيصها لمجموعة بيانات لغة الإشارة المحدودة.</div>
+        <span class="tech-badge">Fine-tuning</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top">
+          <div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div class="tech-nm">YOLO — كشف الإشارة</div>
+        </div>
+        <div class="tech-ds">يُستخدم YOLO للكشف السريع عن الإشارة وتحديد موضعها في الإطار كخطوة أولى.</div>
+        <span class="tech-badge">Detection</span>
+      </div>
+    </div>
+    <div class="tech-section-title" style="margin-top:2rem">مجموعات البيانات المرجعية</div>
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-top"><div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="tech-nm">WLASL Dataset</div></div>
+        <div class="tech-ds">مجموعة بيانات ضخمة لتعرّف لغة الإشارة على مستوى الكلمات تحتوي على أكثر من ٢٠٠٠ كلمة.</div>
+        <span class="tech-badge">+2000 كلمة</span>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top"><div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div><div class="tech-nm">ASL Alphabet</div></div>
+        <div class="tech-ds">مجموعة بيانات الحروف الهجائية الأمريكية لتدريب التعرّف على الحروف الفردية بدقة عالية.</div>
+        <span class="tech-badge">29 حرف</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div class="tech-tab-content" id="tab-infra">
+    <div class="tech-section-title">بيئة التطوير المحلية</div>
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-top"><div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="tech-nm">Jupyter Notebook</div></div>
+        <div class="tech-ds">بيئة تطوير تفاعلية للنمذجة، تحليل البيانات، وعرض النتائج بشكل مرئي.</div>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top"><div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="1.05" y1="12" x2="7" y2="12"/><line x1="17.01" y1="12" x2="22.96" y2="12"/></svg></div><div class="tech-nm">GitHub</div></div>
+        <div class="tech-ds">إدارة النسخ البرمجية، التعاون بين أعضاء الفريق، وتوثيق تاريخ التطوير.</div>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-top"><div class="tech-ico-box"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><div class="tech-nm">Flask / FastAPI</div></div>
+        <div class="tech-ds">إطار عمل للخادم الخلفي لعرض نموذج الذكاء الاصطناعي عبر واجهة برمجية (API).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4 -->
+  <div class="tech-tab-content" id="tab-metrics">
+    <div class="tech-section-title">مقاييس التقييم المستمرة</div>
+    <table class="metrics-table">
+      <thead><tr><th>المقياس</th><th>التعريف</th><th>الاستخدام في المشروع</th><th>النوع</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RMSE</strong></td><td>جذر متوسط مربّع الخطأ بين القيم المتوقّعة والفعلية</td><td>قياس دقة إحداثيات نقاط المعالم المتوقّعة</td><td><span class="metric-pill">مستمر</span></td></tr>
+        <tr><td><strong>MAE</strong></td><td>متوسط القيمة المطلقة للخطأ</td><td>مقياس مكمّل لـ RMSE في تقييم دقة الموضع</td><td><span class="metric-pill">مستمر</span></td></tr>
+      </tbody>
+    </table>
+    <div class="tech-section-title" style="margin-top:2rem">مقاييس التصنيف</div>
+    <table class="metrics-table">
+      <thead><tr><th>المقياس</th><th>التعريف</th><th>الاستخدام في المشروع</th><th>النوع</th></tr></thead>
+      <tbody>
+        <tr><td><strong>الدقة (Accuracy)</strong></td><td>نسبة التنبؤات الصحيحة من إجمالي العيّنات</td><td>المقياس الأساسي لأداء التصنيف العام للإشارات</td><td><span class="metric-pill">تصنيف</span></td></tr>
+        <tr><td><strong>الضبط (Precision)</strong></td><td>نسبة الإيجابيات الصحيحة من إجمالي الإيجابيات المتوقّعة</td><td>قياس مدى موثوقية تنبؤات الإشارة</td><td><span class="metric-pill">تصنيف</span></td></tr>
+        <tr><td><strong>الاستدعاء (Recall)</strong></td><td>نسبة الإيجابيات الصحيحة المكتشَفة من إجمالي الإيجابيات الفعلية</td><td>قياس قدرة النموذج على اكتشاف جميع حالات الإشارة</td><td><span class="metric-pill">تصنيف</span></td></tr>
+        <tr><td><strong>F1-Score</strong></td><td>المتوسط التوافقي بين الضبط والاستدعاء</td><td>المقياس الموحّد للتوازن بين الضبط والاستدعاء</td><td><span class="metric-pill">تصنيف</span></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:2rem;background:var(--teal-lt);border:1px solid rgba(61,121,112,.18);border-radius:14px;padding:1.4rem 1.6rem">
+      <div style="font-size:.9rem;font-weight:800;color:var(--teal2);margin-bottom:.8rem">الأهداف المتوقّعة</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="text-align:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.9rem">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--teal)">٩٥٪+</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-top:3px">Accuracy</div>
+        </div>
+        <div style="text-align:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.9rem">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--teal)">٩٣٪+</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-top:3px">Precision</div>
+        </div>
+        <div style="text-align:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.9rem">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--teal)">٩٢٪+</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-top:3px">Recall</div>
+        </div>
+        <div style="text-align:center;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:.9rem">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--teal)">٩٣٪+</div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-top:3px">F1-Score</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+<div class="foot">
+  <div><div class="foot-title">إشارة AI — مشروع التخرج</div><div class="foot-sub">جامعة الطائف · قسم علوم الحاسب ٢٠٢٥-٢٠٢٦</div></div>
+  <div class="foot-nav"><a href="index.html">الرئيسية</a><a href="demo.html">النموذج</a><a href="how.html">آلية العمل</a><a href="tech.html">التقنيات</a></div>
+  <div class="foot-badge">جامعة الطائف · ٢٠٢٥-٢٠٢٦</div>
+</div>
+
+<script>
+function showTab(id, btn){
+  document.querySelectorAll('.tech-tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tech-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
