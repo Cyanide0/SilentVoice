@@ -345,3 +345,113 @@ video#cam-feed { position: absolute; inset: 0; width: 100%; height: 100%; object
 .banner-breadcrumb a:hover { color: rgba(230,242,240,.8); }
 .banner-title { font-size: clamp(1.7rem,3vw,2.3rem); font-weight: 900; color: #e6f2f0; margin-bottom: .5rem; }
 .banner-sub   { font-size: .97rem; font-weight: 500; color: rgba(230,242,240,.7); max-width: 600px; line-height: 1.75; }
+/* ─── RESPONSIVE FIXES ─── */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .hero-home {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin: 0 auto 1.8rem;
+  }
+
+  .page-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .meth-phases {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (iPhone) */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* HERO */
+  .hero-home {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  /* CARDS */
+  .page-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* OUTPUT AREA */
+  .output-area {
+    grid-template-columns: 1fr;
+  }
+
+  /* STEPS */
+  .step-card {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card-left {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  /* TECH GRID */
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FOOTER */
+  .foot {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* SECTION PADDING */
+  .section,
+  .demo-layout,
+  .how-layout,
+  .tech-layout {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .btn-main,
+  .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links {
+    font-size: 0.85rem;
+  }
+}
